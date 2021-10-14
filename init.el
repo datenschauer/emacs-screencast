@@ -3,10 +3,20 @@
 ;;---------------------------------
 
 ;; get rid of all fancy ui stuff
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(set-scroll-bar-mode 'nil)
 (setq inhibit-startup-message t)
 (setq-default visible-bell t)
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
+
+;; THEMING
+(set-face-attribute 'default nil :font "Inconsolata-12") 
+(use-package modus-themes
+  :ensure t)
+(load-theme 'modus-operandi t)
 
 (setq default-directory "/home/stefan")
 
