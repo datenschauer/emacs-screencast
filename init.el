@@ -80,3 +80,86 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 
+;; ORG MODE
+(setq org-use-fast-todo-selection t)
+
+(setq org-agenda-files '("~/Nextcloud/Dokumente/Uni/Uni Allgemein/Wissenschaftliches_Arbeiten_mit_Emacs/org_test.org"))
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+(setq org-todo-keywords
+ '((sequence "NEXT(n)" "TODO(t)" "STARTED(s)" "TERMIN(a)" "PROJ(p)" "WAITING(w@/!)" 
+              "SOMEDAY(i!)" "|" "DONE(d!)" "CANCELED(c@/!)" "DELEGATED(g@/!)")))
+
+(setq org-tag-alist '(("uni" . ?w) ("@home" .?h) ("unterwegs" .?u) ("dringend" . ?d)))
+
+(setq org-drawers (quote ("PROPERTIES" "CLOCKTABLE" "LOGBOOK" "CLOCK")))
+
+(setq org-hide-leading-stars 'hidestars)
+(setq org-blank-before-new-entry
+      '((heading . always)
+       (plain-list-item . nil)))
+(setq org-cycle-separator-lines 1)
+(setq org-ellipsis " >")
+(setq org-hide-emphasis-markers t)
+(setq org-startup-folded t)
+(setq org-src-fontify-natively t)
+(setq org-indent-mode nil)
+
+(setq org-catch-invisible-edits t)
+(setq org-ctrl-k-protect-subtree t) 
+(setq org-return-follows-link t)
+(setq org-use-fast-todo-selection t)
+(setq org-M-RET-may-split-line nil)))
+
+(add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1 )))
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-span (quote day)) ;; show only current day as default
+(setq org-agenda-window-setup (quote other-window));;öffne agenda in anderem Fenster
+(setq org-agenda-tags-column -100) ; take advantage of the screen width
+(setq org-agenda-show-future-repeats nil) ;; don't show repetetive tasks only today or nearest future
+(setq org-deadline-warning-days 7)
+(setq org-agenda-tags-column -100) ; take advantage of the screen width
+
+(setq calendar-week-start-day 1
+          calendar-day-name-array ["Sonntag" "Montag" "Dienstag" "Mittwoch"
+                                   "Donnerstag" "Freitag" "Samstag"]
+          calendar-month-name-array ["Januar" "Februar" "März" "April" "Mai"
+                                     "Juni" "Juli" "August" "September"
+                                     "Oktober" "November" "Dezember"])
+
+(setq solar-n-hemi-seasons
+      '("Frühlingsanfang" "Sommeranfang" "Herbstanfang" "Winteranfang"))
+
+(setq holiday-general-holidays
+      '((holiday-fixed 1 1 "Neujahr")
+        (holiday-fixed 5 1 "1. Mai")
+        (holiday-fixed 10 3 "Tag der Deutschen Einheit")))
+
+;; Feiertage für Bayern, weitere auskommentiert
+(setq holiday-christian-holidays
+      '((holiday-float 12 0 -4 "1. Advent" 24)
+        (holiday-float 12 0 -3 "2. Advent" 24)
+        (holiday-float 12 0 -2 "3. Advent" 24)
+        (holiday-float 12 0 -1 "4. Advent" 24)
+        (holiday-fixed 12 25 "1. Weihnachtstag")
+        (holiday-fixed 12 26 "2. Weihnachtstag")
+        (holiday-fixed 1 6 "Heilige Drei Könige")
+        (holiday-easter-etc -48 "Rosenmontag")
+        ;; (holiday-easter-etc -3 "Gründonnerstag")
+        (holiday-easter-etc  -2 "Karfreitag")
+        (holiday-easter-etc   0 "Ostersonntag")
+        (holiday-easter-etc  +1 "Ostermontag")
+        (holiday-easter-etc +39 "Christi Himmelfahrt")
+        (holiday-easter-etc +49 "Pfingstsonntag")
+        (holiday-easter-etc +50 "Pfingstmontag")
+        (holiday-easter-etc +60 "Fronleichnam")
+        (holiday-fixed 8 15 "Mariae Himmelfahrt")
+        (holiday-fixed 11 1 "Allerheiligen")
+        ;; (holiday-float 11 3 1 "Buss- und Bettag" 16)
+        (holiday-float 11 0 1 "Totensonntag" 20)))
+
+
+;; shortcut for changing font-size
+(define-key global-map (kbd "C-1") 'text-scale-increase)
+(define-key global-map (kbd "C-0") 'text-scale-decrease)
