@@ -16,7 +16,7 @@
 (set-face-attribute 'default nil :font "Inconsolata-12") 
 (use-package modus-themes
   :ensure t)
-(load-theme 'modus-operandi t)
+(load-theme 'modus-vivendi t)
 
 (setq default-directory "/home/stefan")
 
@@ -59,11 +59,6 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-;; Theming
-(use-package modus-themes
-  :ensure t)
-(load-theme 'modus-vivendi)
 
 ;; pretty modeline
 (use-package doom-modeline
